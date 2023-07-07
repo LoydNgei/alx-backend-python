@@ -1,0 +1,1 @@
+Today we learn about Python Variable Annotations, Duck typing and How to validate code with mypy
