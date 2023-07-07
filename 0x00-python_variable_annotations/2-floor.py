@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import math
 """Function floor that takes a float n"""
+import math
 
 
 def floor(n: float) -> int:
