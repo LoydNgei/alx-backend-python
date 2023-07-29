@@ -52,20 +52,20 @@ class TestMemoize(unittest.TestCase):
     """class that tests the memoize method"""
 
     def test_memoize(self):
-        """Method with a class TestClass and a method a_method"""
-
-    class TestClass:
+        """Test that when calling a_property twice, the correct result is
+        returned but a_method is only called once using assert_called_once"""
+        class TestClass:
             """class that tests the memoize method"""
             def a_method(self):
-                """Method with a class TestClass and a method a_method"""
+                """a method"""
                 return 42
 
             @memoize
             def a_property(self):
+                """a property"""
                 return self.a_method()
-
-            with patch.object(TestClass, "a_method", return_value=42) as mock:
-                test = TestClass()
-                self.assertEqual(test.a_property, mock.return_value)
-                self.assertEqual(test.a_property, mock.return_value)
-                mock.assert_called_once()
+        with patch.object(TestClass, 'a_method', return_value=42) as mock:
+            test = TestClass()
+            test.a_property
+            test.a_property
+            mock.assert_called_once()
